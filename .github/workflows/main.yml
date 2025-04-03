@@ -24,3 +24,23 @@ jobs:
 
       - name: run test
         run: npm run test
+  
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: checkout code
+        uses: actions/checkout@v4
+
+      - name: install nodejs in runner
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20.12.1
+      
+      - name: install dependencies
+        run: npm install
+
+      - name: build app
+        run: npm run build
+
+      - name: deploy app
+        run: echo "Deploying..."
